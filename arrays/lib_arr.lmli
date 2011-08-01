@@ -1,0 +1,9 @@
+module type Mod1 = sig
+
+  val const0: int -> int
+  val create: int -> int Array.t
+  val kill: int Array.t -> unit
+  val bump: int Array.t * int -> int Array.t
+  val read: int Array.t obs * int -> int
+  
+end

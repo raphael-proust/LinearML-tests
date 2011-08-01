@@ -1,0 +1,36 @@
+module Main = struct
+
+  val main: unit -> unit
+  let main () =
+    let a = Mod1.create 2 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+
+    let x = Mod1.read !a 1 in
+    Print.int x; Print.newline ();
+
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+    let a = Mod1.bump a 1 in
+
+    let x = Mod1.read !a 1 in
+    Print.int x; Print.newline ();
+
+    let a = Mod1.bump a 1 in
+
+    let x = Mod1.read !a 1 in
+    Print.int x; Print.newline ();
+
+    Mod1.kill a;
+(*     main () *)
+    ()
+
+
+end

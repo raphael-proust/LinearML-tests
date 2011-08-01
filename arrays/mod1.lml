@@ -1,0 +1,21 @@
+module Mod1 = struct
+
+  val const0: int -> int
+  let const0 _ = 0
+
+  val create: int -> int Array.t
+  let create length = Array.init length const0
+
+  val kill: int Array.t -> unit
+  let kill a = Array.irelease a
+
+  val bump: int Array.t * int -> int Array.t
+  let bump a idx =
+    let (a, read) = Array.swap a idx 0 in
+    let (a, _) = Array.swap a idx (read + 1) in
+    a
+
+  val read: int Array.t obs * int -> int
+  let read a idx = Array.get a idx
+
+end
