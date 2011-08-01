@@ -1,0 +1,28 @@
+module Main = struct
+
+  val sum: int List.t -> int
+  let sum l = match l with
+    | [] -> 0
+    | h::t -> h + sum t
+
+  val product: int List.t -> int
+  let product l = match l with
+    | [] -> 1
+    | h::t -> h * product t
+
+  val map_succ: int List.t -> int List.t
+  let map_succ l = match l with
+    | [] -> []
+    | h::t -> (h + 1) :: map_succ t
+
+  val main: unit -> unit
+  let main () =
+    let l  = [1;3;4;5] in
+    let sl = sum l in
+    Print.int sl; Print.newline ();
+
+    let l  = map_succ [0;3;1] in
+    let pl = product l in
+    Print.int pl; Print.newline ()
+
+ end
