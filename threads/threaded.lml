@@ -1,0 +1,24 @@
+module Main = struct
+
+  val succ: int #-> int
+  let succ x = x + 1
+
+  val loop: int Future.t -> unit
+  let loop f =
+    if Future.ready !f then begin
+      (*This branch is NEVER used*)
+      let i = Future.wait f in
+      Print.int i; Print.newline ();
+      let next = Future.make succ i in
+      loop next
+    end else begin
+      Print.string "Not ready yet"; Print.newline ();
+      loop f
+    end
+
+  val main: unit -> unit
+  let main () =
+    let init  = Future.make_value 0   in
+    loop init
+
+end
